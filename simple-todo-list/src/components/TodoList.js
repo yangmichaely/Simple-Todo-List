@@ -1,19 +1,8 @@
-import {React, useState} from 'react';
+import React, { useState } from 'react';
 import TodoItem from './TodoItem';
 
 function TodoList() {
-    const [tasks, setTasks] = useState([
-        {
-            id: 1,
-            text: 'Doctor Appointment',
-            completed: true
-        },
-        {
-            id: 2,
-            text: 'Meeting at School',
-            completed: false
-        }
-    ]);
+    const [tasks, setTasks] = useState([]);
 
     const [text, setText] = useState('');
     function addTask(text) {
@@ -22,7 +11,7 @@ function TodoList() {
             text,
             completed: false
         };
-        setTasks([…tasks, newTask]);
+        setTasks([tasks, newTask]);
         setText('');
     }
     function deleteTask(id) {
@@ -31,7 +20,7 @@ function TodoList() {
     function toggleCompleted(id) {
         setTasks(tasks.map(task => {
             if (task.id === id) {
-                return {…task, completed: !task.completed};
+                return {task, completed: !task.completed};
             } else {
                 return task;
             }
